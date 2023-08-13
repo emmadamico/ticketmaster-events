@@ -1,10 +1,16 @@
 import { useState } from "react";
 
-const Navbar = () => {
+const Navbar = ({ onSearch }) => {
     const [search, setSearch] = useState(''); 
 
     const handleInputchange = (event) => {
         setSearch(event.target.value);
+    };
+
+    const handleInputKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            onSearch(search);
+        }
     };
     
     return (
@@ -13,6 +19,7 @@ const Navbar = () => {
             <input 
                 placeholder="Busco tu evento favorito" 
                 onChange={handleInputchange}
+                onKeyDown={handleInputKeyDown}
                 value={search} 
             />
         </div>
