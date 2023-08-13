@@ -19,7 +19,6 @@ const Home = () => {
     fetchMyEventsRef.current = fetchEvents;
 
     useEffect(() => {
-        console.log('useEffect');
         fetchMyEventsRef.current();
     }, []);
 
