@@ -1,15 +1,13 @@
-import { useState } from "react";
-import EventItem from "./components/EventItem";
-import eventsJSON from "../../data/events.json";
+import { useNavigate } from "react-router-dom";
+import { memo } from "react";
 
-const Events = ({ searchTerm }) => {
+import EventItem from './components/EventItem';
 
-    const [data] = useState(eventsJSON);
-    const events = data._embedded.events;
-    //Tmb se puede hacer asi: const { _embedded: { events }} = data;
+const Events = ({ searchTerm, events }) => {
+    const navigate = useNavigate();
 
     const handleEventItemClick = (id) => {
-        console.log('evento clickeado: ', id);
+        navigate(`/detail/${id}`);
     };
 
     const renderEvents = () => {
@@ -17,11 +15,11 @@ const Events = ({ searchTerm }) => {
 
         if (searchTerm.length > 0) {
             eventsFiltered = eventsFiltered.filter((item) => item.name.toLocaleLowerCase().includes(searchTerm));
-        };
-
+        }
+        
         return eventsFiltered.map((eventItem) => (
-            <EventItem 
-                key={`event-item-${eventItem.id}`} 
+            <EventItem
+                key={`event-item-${eventItem.id}`}
                 name={eventItem.name}
                 info={eventItem.info}
                 image={eventItem.images[0].url}
@@ -29,14 +27,14 @@ const Events = ({ searchTerm }) => {
                 id={eventItem.id}
             />
         ));
-    }; 
+    };
 
     return (
         <div>
-            Events
+            Eventos
             {renderEvents()}
         </div>
     );
 };
 
-export default Events;
+export default memo(Events);
