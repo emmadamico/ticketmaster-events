@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import './App.css';
 import Navbar from './components/Navbar';
 import Events from './components/Events';
-import './App.css'
+import SignupForm from './components/SignupForm';
 
 function App() {
   const [searchTerm, setSeacrhTerm] = useState('');
@@ -15,6 +16,7 @@ function App() {
     <>
       <Navbar onSearch={handleNavbarSearch} />
       <Events searchTerm={searchTerm} />
+      <SignupForm />
     </>
   )
 }
