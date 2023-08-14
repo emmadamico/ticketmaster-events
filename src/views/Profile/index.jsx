@@ -19,7 +19,7 @@ const Profile = () => {
                     onClick={() => handleTabClick('my-info')}
                     style={{ marginRight: 8 }}
                 >
-                        Mi informacion
+                    Mi informacion
                 </span>
                 <span
                     className={`${pathname.includes('liked-events') ? styles.active : ''} ${styles.tab}`}
