@@ -15,6 +15,7 @@ const Detail = () => {
     // const { eventId } = useParams();
     // const [eventData, setEventData] = useState({});
     const eventData = resource.eventDetail.read();
+    console.log(eventData)
 
     return (
         <div className={styles.container}>
